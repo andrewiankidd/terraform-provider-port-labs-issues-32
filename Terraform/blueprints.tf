@@ -2,10 +2,10 @@ resource "port-labs_blueprint" "sql-server" {
   provider        = port
   title           = "SQL Server"
   icon            = "Server"
-  identifier      = "sql-server"
+  identifier      = "${var.base_name}-sql"
 
   relations {
-    identifier = port-labs_blueprint.environment.identifier
+    identifier = "environment-rel"
     target     = port-labs_blueprint.environment.identifier
     title      = "Environment"
     many       = true
@@ -22,7 +22,7 @@ resource "port-labs_blueprint" "environment" {
   provider        = port
   title           = "Environment"
   icon            = "Environment"
-  identifier      = "environment"
+  identifier      = "${var.base_name}-env"
 
   properties {
     identifier = "hosting"

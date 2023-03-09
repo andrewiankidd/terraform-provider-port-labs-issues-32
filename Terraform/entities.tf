@@ -14,10 +14,10 @@ resource "port-labs_entity" "sql-server" {
   provider    = port
   title       = "${var.base_name}-sql"
   identifier  = "${var.base_name}-sql"
-  blueprint   = "sql-server"
+  blueprint   = port-labs_blueprint.sql-server.identifier
 
   relations {
-    name       = "environment"
+    name       = "environment-rel"
     identifier = port-labs_entity.environment.identifier
   }
 
